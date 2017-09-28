@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{99d07c21-1991-43bf-bd07-4c618094427d}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{bee7a69b-4322-4efe-9cfe-b859775298d8}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\Ui">
+      <UniqueIdentifier>{5d61e761-0e93-4cda-b592-dc2fd697bcb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ui">
+      <UniqueIdentifier>{145b81fa-48c1-43b9-af6c-3c149b5b4b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{5988c3a3-483a-42d7-80bf-7212e06f72e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{9142c219-5586-42c0-9e14-223bdcbf3505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MyGeometry">
+      <UniqueIdentifier>{f555cec9-b96d-42d0-87ec-8d5f6e7d8be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MyGeometry">
+      <UniqueIdentifier>{e15ca16b-c776-4e85-bd69-417cfc329dac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MyTools">
+      <UniqueIdentifier>{5aad3eeb-e164-4659-8a5e-d0b56541b44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MyTools">
+      <UniqueIdentifier>{d23e4ab5-a3d8-48c3-bc14-efb38fafbcca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{ad133f7d-7b43-4821-9372-3142c7abcc37}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Skippy.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Skippy.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Skippy.cpp">
+      <Filter>Source Files\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MyGLWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MyGLWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGLWidget.cpp">
+      <Filter>Source Files\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MyModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MyModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RenderFramework.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RenderFramework.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGeometry\MyMesh.cpp">
+      <Filter>Source Files\MyGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGeometry\MyModel.cpp">
+      <Filter>Source Files\MyGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGeometry\RenderFramework.cpp">
+      <Filter>Source Files\MyGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTools\SparseMatrix.cpp">
+      <Filter>Source Files\MyTools</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGeometry\MyStroke.cpp">
+      <Filter>Source Files\MyGeometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MyStroke.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MyStroke.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Skippy.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Skippy.h">
+      <Filter>Header Files\Ui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MyGLWidget.h">
+      <Filter>Header Files\Ui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MyGeometry\MyModel.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MyGeometry\RenderFramework.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MyGeometry\MyStroke.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_Skippy.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGeometry\MyMesh.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTools\SparseMatrix.h">
+      <Filter>Header Files\MyTools</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTools\Exceptions.h">
+      <Filter>Header Files\MyTools</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGeometry\MyBox.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGeometry\MyDataStruct.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MyGeometry\MyRay.h">
+      <Filter>Header Files\MyGeometry</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\modelShader.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\modelShader.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\strokeShader.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shader\strokeShader.vert">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+</Project>
