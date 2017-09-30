@@ -3,7 +3,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>E:\SDK\Include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\SDK\Eigen3;E:\SDK\Boost\boost_1_51_0;E:\SDK\Include;$(IncludePath)</IncludePath>
     <LibraryPath>E:\SDK\Lib\Debug\X64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>

@@ -3,7 +3,7 @@
 
 #include <qvector.h>
 #include <qdebug.h>
-#include "Exceptions.h"
+#include "MyExceptions.h"
 
 
 template<typename T>

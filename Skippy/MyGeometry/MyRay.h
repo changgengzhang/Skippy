@@ -12,6 +12,7 @@ public:
 
 	glm::vec3 m_original;
 	glm::vec3 m_direction;
+	int m_sign[3];
 
 public:
 	MyRay(): m_valid(false){}
@@ -20,10 +21,15 @@ public:
 		m_valid(true),
 		m_original(original),
 		m_direction(glm::normalize(direction))
-	{}
+	{
+		m_sign[0] = (m_direction.x < 0);
+		m_sign[1] = (m_direction.y < 0);
+		m_sign[2] = (m_direction.z < 0);
+	}
 	~MyRay() {}
 
-	bool isRayIntersectWithBox(const AABBox& aabbox, float &t)
+
+	bool isRayIntersectWithBox(const AABBox& aabbox)
 	{
 		if (!m_valid)
 			return false;
@@ -44,18 +50,24 @@ public:
 
 		if (tmax < 0)
 		{
-			t = tmax;
+			//t = tmax;
 			return false;
 		}
 
 		if (tmin > tmax)
 		{
-			t = tmax;
+			//t = tmax;
 			return false;
 		}
 
-		t = tmin;
+		//t = 0.0f;
 		return true;
+	}
+
+	// 没有和box相交的射线
+	float distanceFromBoxToRay(const AABBox& aabbox)
+	{
+		  
 	}
 
 };

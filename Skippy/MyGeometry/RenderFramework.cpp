@@ -44,19 +44,31 @@ void RenderFramework::addStroke()
 
 void RenderFramework::mousePressEvent(QMouseEvent *mouseEvent)
 {
+	m_stroke.reset();
+	/*m_stroke.addPoint(glm::vec2(200.0f, 200.0f));
+	m_stroke.addPoint(glm::vec2(400.0f, 200.0f));
+	m_stroke.addPoint(glm::vec2(400.0f, 600.0f));
+	m_stroke.addPoint(glm::vec2(800.0f, 800.0f));
+
+	m_stroke.resamplePoint();
+	m_stroke.m_cameraPos = m_cameraPos;
+	m_stroke.setupRay(m_viewMat, m_projMat);
+	m_stroke.classfyPoints(m_model.m_mesh->m_box);
+	m_stroke.updateBufferData();*/
 	
 }
 
 
 void RenderFramework::mouseReleaseEvent(QMouseEvent *mouseEvent)
 {
-
+	
 }
 
 
 void RenderFramework::mouseMoveEvent(QMouseEvent *mouseEvent)
 {
 	m_stroke.addPoint(glm::vec2(mouseEvent->x(), mouseEvent->y()));
+	//m_stroke.addPoint(glm::vec2());
 	m_stroke.resamplePoint();
 	m_stroke.m_cameraPos = m_cameraPos;
 	m_stroke.setupRay(m_viewMat, m_projMat);

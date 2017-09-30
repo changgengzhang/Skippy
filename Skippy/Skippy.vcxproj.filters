@@ -116,6 +116,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_MyStroke.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="MyTools\MyMathUtils.cpp">
+      <Filter>Source Files\MyTools</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTools\MySplineCommon.cpp">
+      <Filter>Source Files\MyTools</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Skippy.ui">
@@ -150,9 +156,6 @@
     <ClInclude Include="MyTools\SparseMatrix.h">
       <Filter>Header Files\MyTools</Filter>
     </ClInclude>
-    <ClInclude Include="MyTools\Exceptions.h">
-      <Filter>Header Files\MyTools</Filter>
-    </ClInclude>
     <ClInclude Include="MyGeometry\MyBox.h">
       <Filter>Header Files\MyGeometry</Filter>
     </ClInclude>
@@ -161,6 +164,15 @@
     </ClInclude>
     <ClInclude Include="MyGeometry\MyRay.h">
       <Filter>Header Files\MyGeometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTools\MySplineCommon.h">
+      <Filter>Header Files\MyTools</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTools\MyMathUtils.h">
+      <Filter>Header Files\MyTools</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTools\MyExceptions.h">
+      <Filter>Header Files\MyTools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

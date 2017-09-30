@@ -10,7 +10,8 @@ MyStroke::MyStroke(QObject *parent /* = nullptr */)
 	m_vbo = new QOpenGLBuffer(QOpenGLBuffer::VertexBuffer);
 
 	//m_projMat = glm::ortho(-RenderViewWidth/2.0f, RenderViewWidth/2.0f, -RenderViewHeight/2.0f, RenderViewHeight/2.0f, -1.0f, 1.0f);
-	m_orthoProjMat = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+	//m_orthoProjMat = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+	m_orthoProjMat = glm::ortho(0.0f, RenderViewWidth, 0.0f, RenderViewHeight, -1.0f, 1.0f);
 }
 
 
@@ -148,46 +149,66 @@ void MyStroke::updateBufferData()
 void MyStroke::addPoint(glm::vec2 point)
 {
 	// 转换到坐标域为 -1, 1之间
-	glm::vec2 normalizedPoint = glm::vec2(2 * point.x / RenderViewWidth - 1, 1 - 2 * point.y / RenderViewHeight);
-	m_inputPoints.push_back(normalizedPoint);
-	m_pointCount = m_inputPoints.count();
+	glm::vec2 reversPoint = glm::vec2(point.x, RenderViewHeight - point.y);
+
+	if (m_inputPoints.count() == 0)
+	{
+		m_inputPoints.push_back(reversPoint);
+		m_pointCount = m_inputPoints.count();
+	}
+	// 检查距离，如果太小，就不放进去了
+	float dist = glm::length(m_inputPoints.back() - reversPoint);
+	if (dist > 10.0f)
+	{
+		m_inputPoints.push_back(reversPoint);
+		m_pointCount = m_inputPoints.count();
+	}
 }
 
 
 void MyStroke::resamplePoint()
 {
 	m_resamplePoints.clear();
+	m_resamplePoints.resize(m_pointCount);
+
 	for (uint i = 0; i < m_inputPoints.count(); i++)
 	{
-		m_resamplePoints.push_back(m_inputPoints.at(i));
+		m_resamplePoints[i] = m_inputPoints.at(i);
 	}
+
 }
 
 
 void MyStroke::setupRay(glm::mat4 viewMat, glm::mat4 projMat)
 {
+	
 	m_rays.clear();
 	m_rays.resize(m_pointCount);
+
+	float nearClippingPlane = 0.1;
 
 	for (uint i = 0; i < m_pointCount; i++)
 	{ 
 		// 注意这里【 z 值为1.0 】，我还没想明白为什么。
-		glm::vec4 worldVertex = glm::inverse(projMat * viewMat) * glm::vec4(m_resamplePoints.at(i), 1.0f, 1.0f);
-		//glm::vec4 worldVertex2 = glm::inverse(projMat * viewMat) * glm::vec4(m_resamplePoints.at(i), -1.0f, 1.0f);
-		//m_rays[i] = MyRay(m_cameraPos, glm::normalize(glm::vec3(worldVertex1) - glm::vec3(worldVertex2)));
 
-		//qInfo() << glm::to_string(worldVertex).c_str();
+		glm::vec4 normPos;
+		normPos.x = 2 * m_resamplePoints.at(i).x / RenderViewWidth - 1;
+		normPos.y = 2 * m_resamplePoints.at(i).y / RenderViewHeight - 1;
+		normPos.z = 0.1f;
+		normPos.w = 1.0f;
 
-		if (worldVertex.w != 0)
+		glm::vec4 worldPos = glm::inverse(projMat * viewMat) * glm::vec4(normPos);
+
+
+
+		if (worldPos.w != 0.0)
 		{
-			worldVertex.x /= worldVertex.w;
-			worldVertex.y /= worldVertex.w;
-			worldVertex.z /= worldVertex.w;
+			worldPos.x /= worldPos.w;
+			worldPos.y /= worldPos.w;
+			worldPos.z /= worldPos.w;
 		}
 
-		//qInfo() << glm::to_string(worldVertex).c_str();
-
-		m_rays[i] = MyRay(m_cameraPos, glm::normalize(glm::vec3(worldVertex) - m_cameraPos));
+		m_rays[i] = MyRay(m_cameraPos, glm::normalize(glm::vec3(worldPos) - m_cameraPos));
 		
 	}
 }
@@ -195,8 +216,8 @@ void MyStroke::setupRay(glm::mat4 viewMat, glm::mat4 projMat)
 
 void MyStroke::classfyPoints(const AABBox& aabbox)
 {
-	m_onOrOff.clear();
-	m_onOrOff.resize(m_pointCount);
+	m_pointFlags.clear();
+	m_pointFlags.resize(m_pointCount);
 
 	m_colors.clear();
 	m_colors.resize(m_pointCount);
@@ -206,11 +227,9 @@ void MyStroke::classfyPoints(const AABBox& aabbox)
 
 	for (uint i = 0; i < m_rays.count(); i++)
 	{
-		float t;
-		bool ret = m_rays[i].isRayIntersectWithBox(aabbox, t);
+		bool ret = m_rays[i].isRayIntersectWithBox(aabbox);
 		
-		m_onOrOff[i] = ret;
-		m_distant[i] = t;
+		m_pointFlags[i] = ret;
 
 		if (ret == true)
 		{
@@ -223,10 +242,30 @@ void MyStroke::classfyPoints(const AABBox& aabbox)
 
 	}
 
-	if (m_pointCount == 10)
+}
+
+
+void MyStroke::computeHeightField()
+{
+	for (uint i = 0; i < m_pointCount; i++)
 	{
-		int a = 0;
+		// on model point
+		if (m_pointFlags.at(i))
+		{
+			
+		}
+		else
+		{
+
+		}
 	}
+}
+
+
+void MyStroke::reset()
+{
+	m_inputPoints.clear();
+	m_resamplePoints.clear();
 }
 
 

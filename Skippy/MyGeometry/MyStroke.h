@@ -14,10 +14,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+
+
 #include "Utils.h"
 #include "MyBox.h"
 #include "MyRay.h"
-
+#include "MyTools/MySplineCommon.h"
 
 class MyStroke : public QObject, protected QOpenGLFunctions
 {
@@ -43,6 +45,11 @@ public:
 	void setupRay(glm::mat4 viewMat, glm::mat4 projMat);
 	void classfyPoints(const AABBox& aabbox);
 
+	// 清除
+	void reset();
+	
+	// 计算高度场
+	void computeHeightField();
 private:
 	void drawLine();
 	void drawPoints();
@@ -66,7 +73,7 @@ private:
 	QVector<MyRay> m_rays;
 
 	// on off segment 标记
-	QVector<bool> m_onOrOff;
+	QVector<bool> m_pointFlags;
 
 	// 射线到包围盒的距离
 	QVector<float> m_distant;
