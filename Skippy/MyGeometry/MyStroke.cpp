@@ -171,9 +171,29 @@ void MyStroke::resamplePoint()
 	m_resamplePoints.clear();
 	m_resamplePoints.resize(m_pointCount);
 
+	if (m_pointCount < 3)
+	{
+		for (uint i = 0; i < m_pointCount; i++)
+		{
+			m_resamplePoints[i] = m_inputPoints[i];
+		}
+		return;
+	}
+
+
+	CubicSpine spline;
+
 	for (uint i = 0; i < m_inputPoints.count(); i++)
 	{
-		m_resamplePoints[i] = m_inputPoints.at(i);
+		spline.addPoint(m_inputPoints[i]);
+	}
+
+	spline.compute();
+	
+	float step = 1.0f / m_pointCount;
+	for (uint i = 0; i < m_inputPoints.count(); i++)
+	{
+		m_resamplePoints[i] = spline.eval(step * i);
 	}
 
 }
